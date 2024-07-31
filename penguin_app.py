@@ -92,7 +92,7 @@ elif st.session_state.page == 'Data Visualisation':
         ).interactive()
 
         st.altair_chart(scatter_chart, use_container_width=True)
-else:
-    st.info("Please upload the penguin CSV file, you can find it ", unsafe_allow_html=True)
-    st.markdown("[here](https://github.com/tylerjrichards/Streamlit-for-Data-Science/blob/main/penguin_app/penguins.csv).", unsafe_allow_html=True)
 
+else:
+    st.info("Please upload the penguin CSV file.")
+    st.markdown("[here](https://github.com/tylerjrichards/Streamlit-for-Data-Science/blob/main/penguin_app/penguins.csv).", unsafe_allow_html=True)
