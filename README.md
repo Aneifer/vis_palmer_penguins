@@ -3,6 +3,7 @@
 ## Overview
 
 This Streamlit app is designed for data exploration and visualization of the Palmer Penguins dataset. The app demonstrates how Streamlit can be used to create interactive and visually appealing data science applications.
+You can [find my penguin app here](https://palmerpenguins.streamlit.app/).
 
 ## Features
 
@@ -26,9 +27,3 @@ For more information about the dataset, visit the [Palmer Penguins dataset GitHu
 
 - [Palmer Penguins dataset](https://github.com/allisonhorst/palmerpenguins)
 - [CSV File for Upload](https://github.com/tylerjrichards/Streamlit-for-Data-Science/blob/main/penguin_app/penguins.csv)
-
-## Future Enhancements
-
-- More detailed visualizations
-- Additional data analysis features
-- Insights and summaries based on the dataset
