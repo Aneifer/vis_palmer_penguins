@@ -55,8 +55,8 @@ if st.session_state.page == 'About this App':
         The Palmer Penguins dataset was chosen for this project due to its simplicity and variety of data points, making it ideal for exploratory data analysis and visualization. It is a popular dataset in the data science community, often used for demonstrating data analysis techniques and building machine learning models. By using this dataset, we aim to showcase the capabilities of Streamlit in creating interactive and insightful data visualizations.       
     """)
 
-# Content for "Penguins"
-elif st.session_state.page == 'Data Set':
+# Content for "Dataset"
+elif st.session_state.page == 'Dataset':
     st.title("Penguins dataset")
     st.markdown("""
         The Palmer Penguins dataset contains data on three penguin species observed on three islands in the Palmer Archipelago, Antarctica. The dataset includes measurements such as bill length, bill depth, flipper length, body mass, and more, along with the species and islands.
