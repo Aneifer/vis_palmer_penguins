@@ -34,7 +34,7 @@ def main():
     facet.map(plt.scatter, "bill length (mm)", "bill depth (mm)").add_legend()
     st.pyplot(plt)
 
-    image_path = "/home/an/git/Aneifer/vis_palmer_penguins_app/media/24_Palmer Penguins_Bill length and depth_Anna Neifer.png"
+    image_path = "/home/an/git/Aneifer/vis_palmer_penguins/media/24_Palmer Penguins_Bill length and depth_Anna Neifer.png"
     st.image(image_path, caption="Illustration of the bill of penguins. Source: Allison Horst.", use_column_width=True)
 
     st.subheader("Violin Plot of Flipper Length by Species")

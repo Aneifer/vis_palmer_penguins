@@ -2,7 +2,7 @@ import streamlit as st
 
 def main():
     st.header("About the Penguin App", divider="blue")
-    image_path = "/home/an/git/Aneifer/vis_palmer_penguins_app/media/24_Palmer Penguins Species_Anna Neifer.png"
+    image_path = "/home/an/git/Aneifer/vis_palmer_penguins/media/24_Palmer Penguins Species_Anna Neifer.png"
     st.image(
         image_path,
         caption="Illustration of the three species of penguins featured in the Palmer Penguins dataset. Source: Allison Horst.",
