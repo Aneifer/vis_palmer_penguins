@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import os
 
 def main():
     st.header("Penguins dataset", divider="blue")
@@ -33,8 +34,7 @@ def main():
     facet = sns.FacetGrid(df, hue="species", height=6, palette="mako")
     facet.map(plt.scatter, "bill length (mm)", "bill depth (mm)").add_legend()
     st.pyplot(plt)
-
-    image_path = "/home/an/git/Aneifer/vis_palmer_penguins/media/24_Palmer Penguins_Bill length and depth_Anna Neifer.png"
+    image_path = os.path.join("media", "24_Palmer Penguins_Bill length and depth_Anna Neifer.png")
     st.image(image_path, caption="Illustration of the bill of penguins. Source: Allison Horst.", use_column_width=True)
 
     st.subheader("Violin Plot of Flipper Length by Species")
