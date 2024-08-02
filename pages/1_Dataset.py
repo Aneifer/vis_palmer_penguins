@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import plotly.express as px
 import os
 
 def main():
@@ -29,29 +30,59 @@ def main():
 
     # Visualizations
     sns.color_palette("mako")
-    st.subheader("Bill Length vs. Bill Depth")
+    st.subheader("Bill Length and Bill Depth by Species")
     st.markdown(
-    """
-    This scatter plot visualizes the relationship between the bill length and bill depth for each species of penguin.
-    By coloring the data points according to species, we can observe how these measurements differ between species.
-    
-    **Key Insights:**
-    - **Adelie Penguins** tend to have shorter bill lengths and smaller bill depths compared to other species.
-    - **Gentoo Penguins** generally exhibit longer bill lengths.
-    - **Chinstrap Penguins** often show similar bill depths to Adelie but have longer bills.
-    
-    The scatter plot helps us to visually distinguish species based on their bill characteristics, which is important for identification and understanding species differences.
-    """
+        """
+        This interactive scatter plot shows all data points for bill length and bill depth for each penguin species. By visualizing each data point, we can observe how these measurements differ and overlap between species.
+        
+        **Key Insights:**
+        - **Adelie Penguins** tend to have shorter bill lengths and smaller bill depths compared to other species.
+        - **Gentoo Penguins** generally exhibit longer bill lengths.
+        - **Chinstrap Penguins** often show similar bill depths to Adelie but have longer bills.
+        
+        The plot helps us to visually distinguish species based on their bill characteristics, which is important for identification and understanding species differences.
+        """
     )
-    plt.figure(figsize=(10, 6))
-    facet = sns.FacetGrid(df, hue="species", height=6, palette="mako")
-    facet.map(plt.scatter, "bill length (mm)", "bill depth (mm)").add_legend()
-    st.pyplot(plt)
 
+    # Define custom colors for each species based on the image
+    species_colors = {
+        "Adelie": "#3B3B6D",    # Dark blue
+        "Chinstrap": "#4B788C", # Medium blue
+        "Gentoo": "#61A9A6"     # Light teal
+    }
+
+    
+     # Plotly figure using viridis color scale
+    fig = px.scatter(
+        df,
+        x="bill length (mm)",
+        y="bill depth (mm)",
+        color="species",
+        color_discrete_map=species_colors,
+        symbol="species",
+        hover_data=["species", "bill length (mm)", "bill depth (mm)"],
+        
+    )
+
+    # Add a white line around each point
+    fig.update_traces(marker=dict(size=12,line=dict(width=1, color='white')))
+
+    fig.update_layout(
+        xaxis_title="Bill Depth (mm)",
+        yaxis_title="Bill Length (mm)",
+        template="simple_white"
+    )
+
+    st.plotly_chart(fig)
+
+
+
+    # include illustration of a bill of a penguin
     st.subheader("Bill of a penguin")
     image_path = os.path.join("media", "24_Palmer Penguins_Bill length and depth_Anna Neifer.png")
     st.image(image_path, caption="Illustration explains bill length and depth of penguins. Source: Allison Horst.", use_column_width=True)
 
+    # Create a violin plot
     st.subheader("Flipper Length by Species")
     st.markdown(
     """
@@ -64,16 +95,18 @@ def main():
     The plot highlights the physical adaptations of different penguin species that may relate to their habitat and lifestyle.
     """
     )
+
+
     sns.color_palette("mako")
     plt.figure(figsize=(10, 6))
-    sns.violinplot(x="species", y="flipper length (mm)", data=df, palette="mako")
+    sns.violinplot(x="species", y="flipper length (mm)", data=df, palette=species_colors)
     st.pyplot(plt)
 
     st.subheader("Correlation between Body Mass and Flipper Length")
     
     correlation_value = df["body mass (g)"].corr(df["flipper length (mm)"])
 
-    # Shows DataFrame with correlation matrixbetween body mass and flipper length.
+    # Shows DataFrame with correlation matrix between body mass and flipper length.
     st.write("Correlation Matrix")
     st.write(df[["body mass (g)", "flipper length (mm)"]].corr())
     st.markdown(f"""
@@ -91,11 +124,10 @@ def main():
     """
     )
 
-    plt.figure(figsize=(10, 6))
-    sns.color_palette("mako")
-    facet = sns.FacetGrid(df, hue="species", height=6, palette="mako")
+    # Create a scatter plot using FacetGrid
+    facet = sns.FacetGrid(df, hue="species", height=6, palette=species_colors)
     facet.map(plt.scatter, "body mass (g)", "flipper length (mm)").add_legend()
-    st.pyplot(plt)
+    st.pyplot(facet.fig)  # Use facet.fig to ensure correct figure handling
 
     st.markdown("""
     **Ecological Significance**
@@ -105,4 +137,3 @@ def main():
     
 if __name__ == "__main__":
     main()
-
