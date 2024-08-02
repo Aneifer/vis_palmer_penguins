@@ -2,6 +2,13 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 
+# Define custom colors for each species based on the image
+species_colors = {
+    "Adelie": "#3B3B6D",    # Dark blue
+    "Chinstrap": "#4B788C", # Medium blue
+    "Gentoo": "#61A9A6"     # Light teal
+}
+
 def main():
     st.header("Visual Interaction", divider="blue")
     st.write(
@@ -12,7 +19,7 @@ def main():
     You can find the dataset [here](https://github.com/allisonhorst/palmerpenguins).
     """
     )
-    
+
     uploaded_file = st.file_uploader("", type="csv")
     if uploaded_file is not None:
         try:
@@ -29,16 +36,15 @@ def main():
             if all(column in df.columns for column in required_columns):
                 df.rename(
                     columns={
-                    "bill_length_mm": "bill length (mm)",
-                    "bill_depth_mm": "bill depth (mm)",
-                    "flipper_length_mm": "flipper length (mm)",
-                    "body_mass_g": "body mass (g)",
+                        "bill_length_mm": "bill length (mm)",
+                        "bill_depth_mm": "bill depth (mm)",
+                        "flipper_length_mm": "flipper length (mm)",
+                        "body_mass_g": "body mass (g)",
                     },
                     inplace=True,
-                    )
+                )
                 st.subheader("Uploaded Data")
                 st.write(df)
-                
 
                 st.subheader("Interactive Scatter Plot with Altair")
                 numeric_columns = ["bill length (mm)", "bill depth (mm)", "flipper length (mm)", "body mass (g)"]
@@ -58,10 +64,18 @@ def main():
                     index=0,
                 )
 
+                # Define a color scale for species based on the custom colors
+                color_scale = alt.Scale(domain=list(species_colors.keys()), range=list(species_colors.values()))
+
                 scatter_chart = (
                     alt.Chart(df)
                     .mark_circle(size=60)
-                    .encode(x=x_axis, y=y_axis, color=color_var, tooltip=list(df.columns))
+                    .encode(
+                        x=x_axis,
+                        y=y_axis,
+                        color=alt.Color(color_var, scale=color_scale) if color_var == "species" else color_var,
+                        tooltip=list(df.columns)
+                    )
                     .interactive()
                 )
 
@@ -75,4 +89,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
