@@ -12,11 +12,21 @@ def main():
 
     st.subheader("Penguins? What is it all about?")
     st.markdown(
-        """
-        This app demonstrates the capabilities of the Palmer Penguins dataset, a popular resource for data analysis and visualization. Developed as part of a project at the Data Science Retreat in Berlin, the app showcases how Streamlit, an open-source framework, can be used for creating interactive and insightful data visualizations.
+    """
+    **Palmer Penguins:**
+    
+    These three adorable penguins—Chinstrap, Gentoo and Adelie—are the stars of the Palmer Penguins dataset, a popular resource for data analysis and visualization. 
+    This dataset provides insights into the physical characteristics of these species, collected from the Palmer Archipelago in Antarctica.
 
-        Users can upload datasets, specifically the Palmer Penguins dataset, to explore various visualizations and gain insights into the data. This dataset was chosen for its simplicity and diversity, making it ideal for exploratory data analysis and machine learning demonstrations.
-        """
+    **Hey, I'm Anna:**
+
+    I'm a data scientist and journalist and passionate about creating visualizations that make data accessible and engaging. Find my [Github Profile here](https://github.com/Aneifer).
+
+    **Project at Data Science Retreat:**
+
+    I developed this app as part of a project at the Data Science Retreat in Berlin, and I've been enhancing it since summer 2024. 
+    The Penguin App is built with Streamlit, an open-source framework that enables the creation of prototypes and data visualisations.
+    """
     )
 
 if __name__ == "__main__":

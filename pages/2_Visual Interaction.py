@@ -4,12 +4,15 @@ import altair as alt
 
 def main():
     st.header("Visual Interaction", divider="blue")
-    st.write("Please upload the penguin CSV file. You can find the dataset ")
-    st.markdown(
-        "[here](https://github.com/tylerjrichards/Streamlit-for-Data-Science/blob/main/penguin_app/penguins.csv).",
-        unsafe_allow_html=True,
+    st.write(
+    """
+    This is the interactive visualization section! Here, you can upload your own Penguin CSV file 
+    and customize the scatter plots to explore the data in various ways. 
+    Feel free to choose different variables and visualize the relationships between them.
+    You can find the dataset [here](https://github.com/allisonhorst/palmerpenguins).
+    """
     )
-
+    
     uploaded_file = st.file_uploader("", type="csv")
     if uploaded_file is not None:
         try:
@@ -24,19 +27,30 @@ def main():
                 "sex",
             ]
             if all(column in df.columns for column in required_columns):
+                df.rename(
+                    columns={
+                    "bill_length_mm": "bill length (mm)",
+                    "bill_depth_mm": "bill depth (mm)",
+                    "flipper_length_mm": "flipper length (mm)",
+                    "body_mass_g": "body mass (g)",
+                    },
+                    inplace=True,
+                    )
+                st.subheader("Uploaded Data")
                 st.write(df)
+                
 
                 st.subheader("Interactive Scatter Plot with Altair")
-                numeric_columns = ["bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"]
+                numeric_columns = ["bill length (mm)", "bill depth (mm)", "flipper length (mm)", "body mass (g)"]
                 x_axis = st.selectbox(
                     "Choose X axis",
                     options=numeric_columns,
-                    index=numeric_columns.index("flipper_length_mm"),
+                    index=numeric_columns.index("flipper length (mm)"),
                 )
                 y_axis = st.selectbox(
                     "Choose Y axis",
                     options=numeric_columns,
-                    index=numeric_columns.index("body_mass_g"),
+                    index=numeric_columns.index("body mass (g)"),
                 )
                 color_var = st.selectbox(
                     "Choose Color Variable",
