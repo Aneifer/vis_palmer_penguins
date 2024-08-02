@@ -28,6 +28,15 @@ def main():
     st.subheader("Peak into the dataset:")
     st.write(df.head())
 
+
+    # Define custom colors for each species based on the image
+    species_colors = {
+    "Adelie": "#3B3B6D",    # Dark blue
+    "Chinstrap": "#4B788C", # Medium blue
+    "Gentoo": "#61A9A6"     # Light teal
+    }
+
+
     # Visualizations
     sns.color_palette("mako")
     st.subheader("Bill Length and Bill Depth by Species")
@@ -44,14 +53,7 @@ def main():
         """
     )
 
-    # Define custom colors for each species based on the image
-    species_colors = {
-        "Adelie": "#3B3B6D",    # Dark blue
-        "Chinstrap": "#4B788C", # Medium blue
-        "Gentoo": "#61A9A6"     # Light teal
-    }
-
-    
+   
      # Plotly figure using viridis color scale
     fig = px.scatter(
         df,
@@ -125,9 +127,9 @@ def main():
     )
 
     # Create a scatter plot using FacetGrid
-    facet = sns.FacetGrid(df, hue="species", height=6, palette=species_colors)
+    facet = sns.FacetGrid(df, hue="species", height=5, palette=species_colors)
     facet.map(plt.scatter, "body mass (g)", "flipper length (mm)").add_legend()
-    st.pyplot(facet.fig)  # Use facet.fig to ensure correct figure handling
+    st.pyplot(facet.fig)  
 
     st.markdown("""
     **Ecological Significance**
