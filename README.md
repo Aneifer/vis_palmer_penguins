@@ -20,11 +20,13 @@ To run the app locally, follow these steps:
 
    ```bash
    git clone https://github.com/yourusername/palmer-penguins-streamlit.git
-
+   ```
    
 **Install Requirements:** Install the necessary packages using the requirements.txt file:
 
+   ```
    pip install -r requirements.txt
+   ```
 
 ## Dataset
 
