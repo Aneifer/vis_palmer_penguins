@@ -11,11 +11,20 @@ You can [find my penguin app here](https://palmerpenguins.streamlit.app/).
 - **Penguins**: Detailed information about the Palmer Penguins dataset, including its significance and structure.
 - **Data Visualization**: Allows users to upload the Palmer Penguins dataset and create interactive scatter plots using Altair.
 
-## How to Use
+## How to Install
 
-1. **Navigation**: Use the sidebar menu to navigate between different sections of the app.
-2. **Upload Data**: In the "Data Visualization" section, upload the Palmer Penguins CSV file to start exploring the data.
-3. **Create Plots**: Select the variables for the x-axis, y-axis, and color to generate interactive scatter plots.
+To run the app locally, follow these steps:
+
+
+**Clone the Repository**: Clone this repository to your local machine using:
+
+   ```bash
+   git clone https://github.com/yourusername/palmer-penguins-streamlit.git
+
+   
+**Install Requirements:** Install the necessary packages using the requirements.txt file:
+
+   pip install -r requirements.txt
 
 ## Dataset
 
@@ -27,3 +36,4 @@ For more information about the dataset, visit the [Palmer Penguins dataset GitHu
 
 - [Palmer Penguins dataset](https://github.com/allisonhorst/palmerpenguins)
 - [CSV File for Upload](https://github.com/tylerjrichards/Streamlit-for-Data-Science/blob/main/penguin_app/penguins.csv)
+
