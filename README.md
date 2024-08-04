@@ -16,13 +16,13 @@ You can [find my penguin app here](https://palmerpenguins.streamlit.app/).
 To run the app locally, follow these steps:
 
 
-**Clone the Repository**: Clone this repository to your local machine using:
+**Clone the Repository**: 
 
    ```bash
    git clone https://github.com/yourusername/palmer-penguins-streamlit.git
    ```
    
-**Install Requirements:** Install the necessary packages using the requirements.txt file:
+**Install Requirements:**
 
    ```
    pip install -r requirements.txt
