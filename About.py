@@ -7,7 +7,7 @@ def main():
     st.image(
         image_path,
         caption="Illustration of the three species of penguins featured in the Palmer Penguins dataset. Source: Allison Horst.",
-        use_column_width=True,
+        use_container_width=True,
     )
 
     st.subheader("Penguins? What is it all about?")
