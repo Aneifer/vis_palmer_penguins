@@ -82,7 +82,7 @@ def main():
     # include illustration of a bill of a penguin
     st.subheader("Bill of a penguin")
     image_path = os.path.join("media", "24_Palmer Penguins_Bill length and depth_Anna Neifer.png")
-    st.image(image_path, caption="Illustration explains bill length and depth of penguins. Source: Allison Horst.", use_column_width=True)
+    st.image(image_path, caption="Illustration explains bill length and depth of penguins. Source: Allison Horst.", use_container_width=True)
 
     # Create a violin plot
     st.subheader("Flipper Length by Species")
